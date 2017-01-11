@@ -6,4 +6,6 @@ module.exports = function (app) {
 
   app.use('/stream', require('./stream')());
 
+  app.use('/youtube', require('./youtube')());
+
 }
