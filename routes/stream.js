@@ -1,12 +1,12 @@
-var request = require('request');
-var express = require('express');
-var router = express.Router();
+const request = require('request');
+const express = require('express');
+const router = express.Router();
 
 module.exports = function () {
 
   router.get('/', function (req, res) {
-    var url = req.query.url;
-    var secret = req.query.secret;
+    const url = req.query.url;
+    const secret = req.query.secret;
     if (secret === process.env.SECRET && url) {
       request(url).pipe(res);
     } else {

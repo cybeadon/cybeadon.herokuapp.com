@@ -1,14 +1,15 @@
-var express = require('express');
-var ytdl = require('ytdl-core');
-var router = express.Router();
+const express = require('express');
+const ytdl = require('ytdl-core');
+const router = express.Router();
 
 module.exports = function () {
 
   router.get('/', function (req, res) {
-    var url = req.query.url;
-    var secret = req.query.secret;
+    const url = req.query.url;
+    const secret = req.query.secret;
     if (secret === process.env.SECRET && url) {
-      ytdl.getInfo(url, function (err, info) { 
+      ytdl.getInfo(url, function (err, info) {
+        if (err) res.status(500).send(err);
         res.json(info);
       });
     } else {
