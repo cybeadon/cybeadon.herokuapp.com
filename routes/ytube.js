@@ -9,7 +9,7 @@ module.exports = function () {
     var secret = req.query.secret;
     if (secret === process.env.SECRET && url) {
       ytdl.getInfo(url, function (err, info) { 
-        res.send(info);
+        res.json(info);
       });
     } else {
       res.send('Missing URL or Key');
